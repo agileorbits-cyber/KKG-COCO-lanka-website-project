@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KKG Coco Lanka - Products</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#d4f6be;
+}
+
+/* NAVBAR */
+
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+      background:#ffffff;
+      border-bottom:1px solid #e4e4e4;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo img{
+      width:55px;
+      height:55px;
+      object-fit:contain;
+    }
+
+    .logo h2{
+      font-size:24px;
+      color:#1d4d2f;
+      font-weight:700;
+    }
+
+    nav a{
+      text-decoration:none;
+      margin:0 15px;
+      color:#333;
+      font-size:15px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:#1d4d2f;
+    }
+
+    .btn{
+      background:#2acf69;
+      color:#fff;
+      border:none;
+      padding:14px 28px;
+      cursor:pointer;
+      border-radius:5px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#12341f;
+    }
+
+/* HERO */
+.hero{
+    height:90vh;
+    background:url('images/h.jpeg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:48px;
+    background:rgba(0,0,0,0.45);
+    padding:20px;
+    border-radius:12px;
+}
+
+/* SECTION */
+.section{
+    padding:60px 10%;
+}
+
+.section h2{
+    text-align:center;
+    margin-bottom:40px;
+    color:#234d20;
+    font-size:32px;
+}
+
+/* GRID */
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+.product-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+    max-width:380px;  
+    margin:auto;
+    height:550px;
+    display:flex;
+    flex-direction:column;       
+}
+   
+
+
+.product-card:hover{
+    transform:translateY(-8px);
+}
+
+.product-card img{
+    width:100%;
+    height:280px;
+   /* object-fit:cover;*/
+   object-fit:contain;   
+    background:#f8f8f8; 
+}
+
+.product-content{
+    padding:20px;
+}
+
+.product-content h3{
+    color:#234d20;
+    margin-bottom:10px;
+}
+
+.product-content p{
+    color:#666;
+    line-height:22px;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:18px;
+    font-weight:bold;
+    color:#234d20;
+    margin-bottom:15px;
+}
+
+.quote-btn{
+    display:inline-block;
+    padding:10px 18px;
+    background:#234d20;
+    color:#fff;
+    text-decoration:none;
+    border-radius:25px;
+    transition:0.3s;
+}
+
+.quote-btn:hover{
+    background:#3d6f3a;
+}
+
+/* WHY CHOOSE US */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    text-align:center;
+}
+
+.feature-box{
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.feature-box h3{
+    color:#234d20;
+    margin-bottom:10px;
+}
+
+/* CTA */
+.cta{
+    background:#234d20;
+    color:#fff;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.cta a{
+    display:inline-block;
+    margin-top:20px;
+    background:#fff;
+    color:#234d20;
+    padding:12px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.cta a:hover{
+    background:#e6e6e6;
+}
+
+/* CART BUTTON */
+.cart-btn{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#234d20;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:23px;
+    margin-left:20px;
+    position:relative;
+    transition:0.3s;
+}
+
+.cart-btn:hover{
+    background:#2acf69;
+    transform:scale(1.08);
+}
+
+/* CART ITEM COUNT */
+.cart-count{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#ff3b30;
+    color:#fff;
+    font-size:12px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+.product-buttons{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.cart-add-btn{
+    padding:10px 18px;
+    background:#2acf69;
+    color:#fff;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.cart-add-btn:hover{
+    background:#234d20;
+}
+
+</style>
+</head>
+
+<body>
+
+ <!-- NAVBAR -->
+
+  <header class="navbar">
+
+    <div class="logo">
+
+      <!-- LOGO IMAGE -->
+      <img src="images/logo.webp" alt="logo">
+
+      <h2>KKG COCO Lanka</h2>
+
+    </div>
+
+    <nav>
+  
+  <a href="home.html">Home</a>
+  
+  <a href="ab.html">About</a>
+  <a href="confige.php">Contact</a>
+  <a href="pro.html">Products</a>
+  <a href="ser.html">Services</a>
+</nav>
+
+<a href="get.html"> 
+<button class="btn">
+      Get Quote
+    </button>
+    </a>
+
+    <a href="cart.html" class="cart-btn" title="Shopping Cart">
+    🛒
+    <span class="cart-count">0</span>
+</a>
+
+  </header>
+
+   
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Premium Export Products from Sri Lanka</h1>
+</div>
+
+<!-- 🌿 SPICES -->
+<section class="section" id="Spices">
+<h2>🌿 Spices  🌶️</h2>
+
+<div class="product-grid">
+
+    <div class="product-card">
+        <img src="images/ci.jpeg" alt="Ceylon Cinnamon">
+        <div class="product-content">
+            <h3>Ceylon Cinnamon</h3>
+            <p>Premium Sri Lankan export-grade cinnamon with rich aroma.</p>
+            <div class="price">LKR 600.00 / 50g</div>
+
+<div class="product-buttons">
+    <a href="get.html" class="quote-btn">Request Quote</a>
+    <button class="cart-add-btn" onclick="addToCart('Ceylon Cinnamon', 600)">
+        Add to Cart
+    </button>
+</div>
+    </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/pe.jpeg" alt="Black Pepper">
+        <div class="product-content">
+            <h3>Rosted Curry Powder</h3>
+            <p>High quality spicy Sri Lankan black Curry Powder.</p>
+            <div class="price">LKR 300.00 / 100g</div>
+
+<div class="product-buttons">
+    <a href="get.html" class="quote-btn">Request Quote</a>
+
+    <button class="cart-add-btn" onclick="addToCart('Rosted Curry Powder', 300)">
+        Add to Cart
+    </button>
+</div>
+
+
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/co.jpeg" alt="Ceylon Cinnamon">
+        <div class="product-content">
+           <h3>Curry Powder</h3>  
+        <p>High quality spicy Sri Lankan black Curry Powder.</p>
+            <div class="price">LKR 270.00 / 100g</div>
+            
+<div class="product-buttons">
+    <a href="get.html" class="quote-btn">Request Quote</a>
+
+    <button class="cart-add-btn" onclick="addToCart('Curry Powder', 270)">
+        Add to Cart
+    </button>
+</div>
+
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/tu.jpeg" alt="Ceylon Cinnamon">
+        <div class="product-content">
+           <h3>Turmeric Powder</h3>  
+        <p>High quality  Sri Lankan Turmeric Powder.</p>
+            <div class="price">LKR 340.00 / 50g</div>
+            
+            <div class="product-buttons">
+    <a href="get.html" class="quote-btn">Request Quote</a>
+
+    <button class="cart-add-btn" onclick="addToCart('Turmeric Powder', 340)">
+        Add to Cart
+    </button>
+</div>
+
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/lli.jpeg" alt="Ceylon Cinnamon">
+        <div class="product-content">
+           <h3>Chilli Powder</h3>  
+        <p>High quality spicy Sri Lankan Chilli Powder.</p>
+            <div class="price">LKR 300.00 / 100g</div>
+            
+
+            <div class="product-buttons">
+    <a href="get.html" class="quote-btn">Request Quote</a>
+
+    <button class="cart-add-btn" onclick="addToCart('Chilli Powder', 300)">
+        Add to Cart
+    </button>
+</div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/bl.png" alt="Black Pepper">
+        <div class="product-content">
+            <h3>Black Pepper Powder</h3>
+            <p>High quality spicy Sri Lankan black pepper.</p>
+            <div class="price">LKR 300.00 / 100g</div>
+            
+            <div class="product-buttons">
+    <a href="get.html" class="quote-btn">Request Quote</a>
+
+    <button class="cart-add-btn" onclick="addToCart('Black Pepper Powder', 300 )">
+        Add to Cart
+    </button>
+</div>  
+
+        </div>
+    </div>
+
+</div>
+</section>
+
+<!-- 🥥 COCO PEAT -->
+<section class="section" id="cocopeat">
+<h2>🥥 Coco Peat 🌱 </h2>
+
+<div class="product-grid">
+
+    <div class="product-card">
+        <img src="images/cpb2.jpg" alt="Coco Peat Block">
+        <div class="product-content">
+            <h3>Coco Peat Block</h3>
+            <p>Premium growing medium for agriculture use.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/cpb3.jpg" alt="Coco Husk Chips">
+        <div class="product-content">
+            <h3>Coco chips bricks</h3>
+            <p>Perfect for soil moisture retention and plant growth.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+     <div class="product-card">
+        <img src="images/gb.webp" alt="Coco Husk Chips">
+        <div class="product-content">
+            <h3>Grow bags</h3>
+            <p>Professional hydroponic grow bags designed for greenhouse and commercial agriculture.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+     <div class="product-card">
+        <img src="images/cc.webp" alt="Coco Husk Chips">
+        <div class="product-content">
+            <h3>Coco Fiber</h3>
+            <p>Natural Coir Fiber for Industrial and Agricultural Applications.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+     <div class="product-card">
+        <img src="images/grow-bag.webp" alt="Coco Husk Chips">
+        <div class="product-content">
+            <h3>Open-top Planter Bags</h3>
+            <p>Durable planter bags for indoor and outdoor gardening applications.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+
+</div>
+</section>
+
+<!-- 🍇 DRY FRUITS -->
+<section class="section" id="fruit" >
+<h2>🍇 Dry Fruits 🍍</h2>
+
+<div class="product-grid">
+
+    <div class="product-card">
+        <img src="images/pineapple.webp" alt="Dried Mango">
+        <div class="product-content">
+            <h3>Dehydrated pineapple</h3>
+            <p>Natural tropical dried fruit from Sri Lanka.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/cch.jpg" alt="Dried Mango">
+        <div class="product-content">
+            <h3>Coconut chips</h3>
+            <p>Natural tropical coco chips from Sri Lanka.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+     <div class="product-card">
+        <img src="images/mix-fruits.webp" alt="Dried Mango">
+        <div class="product-content">
+            <h3>Dehydrated mixed fruits</h3>
+            <p>Premium Quality Mix Fruits with Natural Sweetness.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+
+
+
+</div>
+</section>
+
+<!-- 🛢️ COCONUT OIL -->
+<section class="section" id="oil">
+<h2>🛢️ Coconut Oil 🫒 </h2>
+
+<div class="product-grid">
+
+    <div class="product-card">
+        <img src="images/coconut-oil.webp" alt="Virgin Coconut Oil">
+        <div class="product-content">
+            <h3> Coconut Oil</h3>
+            <p>Cold pressed pure coconut oil, export quality.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+
+    <div class="product-card">
+        <img src="images/white-coconut-oil.webp" alt="Virgin Coconut Oil">
+        <div class="product-content">
+            <h3>White Coconut Oil</h3>
+            <p>Export-Grade White Coconut Oil with Superior Purity.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+</div>
+</section>
+
+<!-- 🛢️ COCONUT OIL -->
+<section class="section" id="Other">
+<h2>🧺 Other Products  🤎</h2>
+
+<div class="product-grid">
+
+    <div class="product-card">
+        <img src="images/ki.jpeg" alt="Virgin Coconut Oil">
+        <div class="product-content">
+            <h3> Kithul Treacle</h3>
+            <p> Natural Kithul Treacle from Sri Lanka.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+
+    <div class="product-card">
+        <img src="images/go.jpeg" alt="Virgin Coconut Oil">
+        <div class="product-content">
+            <h3>Goraka Paste</h3>
+            <p>Traditional Goraka Paste from Sri Lanka</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/Goraka.png" alt="Virgin Coconut Oil">
+        <div class="product-content">
+            <h3>Goraka </h3>
+            <p>Pure and 100% natural Goraka from Sri Lanka.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/chi.jpeg" alt="Virgin Coconut Oil">
+        <div class="product-content">
+            <h3>Yalpanam Mango Pickle</h3>
+            <p>Export-Grade White Coconut Oil with Superior Purity.</p>
+            <div class="price">Price on Request</div>
+            <a href="get.html" class="quote-btn">Request Quote</a>
+        </div>
+    </div>
+
+
+</div>
+</section>
+
+<!-- ⭐ WHY CHOOSE US -->
+<section class="section">
+<h2>⭐ Why Choose Us</h2>
+
+<div class="features">
+
+    <div class="feature-box">
+        <h3>Export Quality</h3>
+        <p>International standard certified products.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>100% Natural</h3>
+        <p>Pure and chemical-free agricultural products.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>Bulk Supply</h3>
+        <p>We support wholesale and export orders worldwide.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>Fast Shipping</h3>
+        <p>Reliable international delivery system.</p>
+    </div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+    <h2>Need Bulk Orders?</h2>
+    <p>Get the best export quotation today</p>
+    <a href="get.html">Request Quote</a>
+</div>
+
+    </div>
+
+    <script>
+    function addToCart(name, price) {
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        let existingProduct = cart.find(item => item.name === name);
+
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({
+                name: name,
+                price: price,
+                quantity: 1
+            });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        alert(name + " added to cart!");
+    }
+
+
+</script>
+<script>
+function addToCart(name, price) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingProduct = cart.find(item => item.name === name);
+
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartCount();
+
+    alert(name + " added to cart!");
+}
+
+
+function updateCartCount() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let totalItems = 0;
+
+    cart.forEach(item => {
+        totalItems += item.quantity;
+    });
+
+    document.querySelector(".cart-count").textContent = totalItems;
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    updateCartCount();
+});
+
+
+    </script>
+
+
+</body>
+</html>

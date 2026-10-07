@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KKG Coco Lanka - Checkout</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #d4f6be;
+            color: #333;
+        }
+
+
+        /* NAVBAR */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #fff;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .logo h2 {
+            font-size: 24px;
+            color: #1d4d2f;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 15px;
+            color: #333;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #1d4d2f;
+        }
+
+
+        /* HEADER */
+
+        .checkout-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+        }
+
+        .checkout-header h1 {
+            color: #234d20;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .checkout-header p {
+            color: #666;
+        }
+
+
+        /* MAIN */
+
+        .checkout-container {
+            width: 85%;
+            max-width: 1100px;
+            margin: 20px auto 60px;
+
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 30px;
+        }
+
+
+        /* BOX */
+
+        .checkout-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .checkout-box h2 {
+            color: #234d20;
+            margin-bottom: 25px;
+        }
+
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+
+            width: 100%;
+            padding: 13px;
+
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #234d20;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+
+        /* ORDER SUMMARY */
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+        .order-item-name {
+            color: #333;
+        }
+
+        .order-item-price {
+            color: #234d20;
+            font-weight: bold;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 25px;
+            padding-top: 20px;
+
+            border-top: 2px solid #234d20;
+
+            font-size: 21px;
+            font-weight: bold;
+
+            color: #234d20;
+        }
+
+
+        /* PLACE ORDER */
+
+        .place-order-btn {
+            width: 100%;
+            margin-top: 25px;
+
+            padding: 15px;
+
+            border: none;
+            border-radius: 30px;
+
+            background: #234d20;
+            color: #fff;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .place-order-btn:hover {
+            background: #2acf69;
+        }
+
+
+        /* EMPTY */
+
+        .empty-message {
+            text-align: center;
+            background: #fff;
+
+            width: 85%;
+            max-width: 700px;
+
+            margin: 40px auto;
+            padding: 50px;
+
+            border-radius: 18px;
+        }
+
+        .empty-message h2 {
+            color: #234d20;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 12px 25px;
+
+            background: #234d20;
+            color: #fff;
+
+            text-decoration: none;
+
+            border-radius: 25px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                margin: 5px;
+                display: inline-block;
+            }
+
+            .checkout-container {
+                width: 94%;
+                grid-template-columns: 1fr;
+            }
+
+            .empty-message {
+                width: 94%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <img src="images/logo.webp" alt="KKG Coco Lanka Logo">
+
+            <h2>KKG COCO Lanka</h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="home.html">Home</a>
+
+            <a href="ab.html">About</a>
+
+            <a href="confige.php">Contact</a>
+
+            <a href="pro.html">Products</a>
+
+            <a href="ser.html">Services</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- HEADER -->
+
+    <section class="checkout-header">
+
+        <h1>Checkout</h1>
+
+        <p>Enter your details to complete your order</p>
+
+    </section>
+
+
+
+    <!-- CHECKOUT -->
+
+    <div class="checkout-container">
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="checkout-box">
+
+            <h2>Customer Details</h2>
+
+
+            <form id="checkout-form">
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        required
+                        placeholder="Enter your full name"
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        required
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        required
+                        placeholder="Enter your phone number"
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Delivery Address
+                    </label>
+
+                    <textarea
+                        id="address"
+                        required
+                        placeholder="Enter your delivery address"
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="city">
+                        City
+                    </label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        required
+                        placeholder="Enter your city"
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="country">
+                        Country
+                    </label>
+
+                    <select id="country" required>
+
+                        <option value="">
+                            Select Country
+                        </option>
+
+                        <option value="Sri Lanka">
+                            Sri Lanka
+                        </option>
+
+                        <option value="India">
+                            India
+                        </option>
+
+                        <option value="United Kingdom">
+                            United Kingdom
+                        </option>
+
+                        <option value="United States">
+                            United States
+                        </option>
+
+                        <option value="Australia">
+                            Australia
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="notes">
+                        Order Notes (Optional)
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="Any special instructions..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="place-order-btn"
+                >
+                    Place Order
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ORDER SUMMARY -->
+
+        <div class="checkout-box">
+
+            <h2>Order Summary</h2>
+
+            <div id="order-items"></div>
+
+
+            <div class="order-total">
+
+                <span>Total</span>
+
+                <span id="order-total">
+                    LKR 0.00
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+
+        function loadOrder() {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            let orderItems =
+                document.getElementById("order-items");
+
+            let orderTotal =
+                document.getElementById("order-total");
+
+
+            if (cart.length === 0) {
+
+                document.querySelector(".checkout-container").innerHTML = `
+
+                    <div class="empty-message">
+
+                        <h2>Your Cart is Empty 🛒</h2>
+
+                        <p>
+                            Please add products to your cart before checkout.
+                        </p>
+
+                        <a href="pro.html" class="back-btn">
+                            Browse Products
+                        </a>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            let total = 0;
+
+            orderItems.innerHTML = "";
+
+
+            cart.forEach(function(item) {
+
+                let subtotal =
+                    item.price * item.quantity;
+
+                total += subtotal;
+
+
+                orderItems.innerHTML += `
+
+                    <div class="order-item">
+
+                        <div class="order-item-name">
+
+                            ${item.name}
+                            × ${item.quantity}
+
+                        </div>
+
+                        <div class="order-item-price">
+
+                            LKR ${subtotal.toFixed(2)}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            orderTotal.textContent =
+                "LKR " + total.toFixed(2);
+
+        }
+
+
+
+        /* PLACE ORDER */
+
+        document.getElementById("checkout-form")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+
+
+        let products = cart.map(function(item) {
+
+            return item.name + " x " + item.quantity;
+
+        }).join(", ");
+
+
+        let total = 0;
+
+        cart.forEach(function(item) {
+
+            total += item.price * item.quantity;
+
+        });
+
+
+        let formData = new FormData();
+
+        formData.append(
+            "customer_name",
+            document.getElementById("name").value
+        );
+
+        formData.append(
+            "email",
+            document.getElementById("email").value
+        );
+
+        formData.append(
+            "phone",
+            document.getElementById("phone").value
+        );
+
+        formData.append(
+            "address",
+            document.getElementById("address").value
+        );
+
+        formData.append(
+            "city",
+            document.getElementById("city").value
+        );
+
+        formData.append(
+            "country",
+            document.getElementById("country").value
+        );
+
+        formData.append(
+            "order_notes",
+            document.getElementById("notes").value
+        );
+
+        formData.append(
+            "products",
+            products
+        );
+
+        formData.append(
+            "total",
+            total
+        );
+
+
+        fetch("backend/place_order.php", {
+
+            method: "POST",
+
+            body: formData
+
+        })
+
+        .then(response => response.text())
+
+        .then(result => {
+
+            if (result.trim() === "success") {
+
+                alert(
+                    "Thank you! Your order has been placed successfully."
+                );
+
+                localStorage.removeItem("cart");
+
+                window.location.href = "pro.html";
+
+            } else {
+
+                alert(
+                    "Something went wrong. Please try again."
+                );
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+            alert(
+                "Unable to place the order."
+            );
+
+        });
+
+    });
+
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                loadOrder();
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

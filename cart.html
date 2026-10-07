@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KKG Coco Lanka - Shopping Cart</title>
+
+    <style>
+
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #d4f6be;
+            color: #333;
+        }
+
+
+        /* NAVBAR */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #ffffff;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .logo h2 {
+            font-size: 24px;
+            color: #1d4d2f;
+            font-weight: 700;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 15px;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #1d4d2f;
+        }
+
+
+        /* CART HEADER */
+
+        .cart-header {
+            text-align: center;
+            padding: 55px 20px 30px;
+        }
+
+        .cart-header h1 {
+            color: #234d20;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .cart-header p {
+            color: #666;
+        }
+
+
+        /* CART CONTAINER */
+
+        .cart-container {
+            width: 85%;
+            max-width: 1100px;
+            margin: 20px auto 60px;
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+
+        /* CART ITEM */
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            background: #f8f8f8;
+            border-radius: 12px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h3 {
+            color: #234d20;
+            margin-bottom: 8px;
+        }
+
+        .item-price {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+
+        /* QUANTITY */
+
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-box button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 50%;
+            background: #234d20;
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .quantity-box button:hover {
+            background: #2acf69;
+        }
+
+        .quantity {
+            min-width: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+
+        /* SUBTOTAL */
+
+        .item-subtotal {
+            min-width: 130px;
+            text-align: right;
+            font-weight: bold;
+            color: #234d20;
+        }
+
+
+        /* REMOVE */
+
+        .remove-btn {
+            border: none;
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background: #d90000;
+        }
+
+
+        /* TOTAL */
+
+        .cart-total {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            padding-top: 25px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #234d20;
+        }
+
+
+        /* BUTTONS */
+
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .continue-btn,
+        .checkout-btn {
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .continue-btn {
+            background: #eee;
+            color: #333;
+        }
+
+        .checkout-btn {
+            background: #234d20;
+            color: #fff;
+        }
+
+        .checkout-btn:hover {
+            background: #2acf69;
+        }
+
+
+        /* EMPTY CART */
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .empty-cart h2 {
+            color: #234d20;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                margin: 5px;
+                display: inline-block;
+            }
+
+            .cart-container {
+                width: 94%;
+                padding: 20px;
+            }
+
+            .cart-item {
+                flex-wrap: wrap;
+            }
+
+            .item-subtotal {
+                text-align: left;
+            }
+
+            .cart-actions {
+                flex-direction: column;
+            }
+
+            .continue-btn,
+            .checkout-btn {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <img src="images/logo.webp" alt="KKG Coco Lanka Logo">
+
+            <h2>KKG COCO Lanka</h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="home.html">Home</a>
+
+            <a href="ab.html">About</a>
+
+            <a href="confige.php">Contact</a>
+
+            <a href="pro.html">Products</a>
+
+            <a href="ser.html">Services</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- CART HEADER -->
+
+    <section class="cart-header">
+
+        <h1>🛒 Shopping Cart</h1>
+
+        <p>Review your selected products</p>
+
+    </section>
+
+
+
+    <!-- CART -->
+
+    <div class="cart-container">
+
+        <div id="cart-items"></div>
+
+
+        <div class="cart-total">
+
+            <span>Total:</span>
+
+            <span id="cart-total">LKR 0.00</span>
+
+        </div>
+
+
+        <div class="cart-actions">
+
+            <a href="pro.html" class="continue-btn">
+                ← Continue Shopping
+            </a>
+
+            <a href="checkout.html" class="checkout-btn">
+    Checkout →
+</a>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        function displayCart() {
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            let cartItems = document.getElementById("cart-items");
+
+            let cartTotal = document.getElementById("cart-total");
+
+            cartItems.innerHTML = "";
+
+            let total = 0;
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <h2>Your Cart is Empty 🛒</h2>
+                        <p>You haven't added any products yet.</p>
+
+                        <a href="pro.html" class="checkout-btn">
+                            Browse Products
+                        </a>
+                    </div>
+                `;
+
+                cartTotal.textContent = "LKR 0.00";
+
+                return;
+            }
+
+
+            cart.forEach((item, index) => {
+
+                let subtotal = item.price * item.quantity;
+
+                total += subtotal;
+
+
+                cartItems.innerHTML += `
+
+                    <div class="cart-item">
+
+                        <img src="${item.image || 'images/ci.jpeg'}"
+                             alt="${item.name}">
+
+
+                        <div class="item-info">
+
+                            <h3>${item.name}</h3>
+
+                            <div class="item-price">
+                                LKR ${item.price.toFixed(2)}
+                            </div>
+
+
+                            <div class="quantity-box">
+
+                                <button onclick="changeQuantity(${index}, -1)">
+                                    −
+                                </button>
+
+                                <span class="quantity">
+                                    ${item.quantity}
+                                </span>
+
+                                <button onclick="changeQuantity(${index}, 1)">
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="item-subtotal">
+
+                            LKR ${subtotal.toFixed(2)}
+
+                        </div>
+
+
+                        <button class="remove-btn"
+                                onclick="removeItem(${index})">
+
+                            Remove
+
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            cartTotal.textContent = "LKR " + total.toFixed(2);
+
+        }
+
+
+
+        function changeQuantity(index, change) {
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+            cart[index].quantity += change;
+
+
+            if (cart[index].quantity <= 0) {
+
+                cart.splice(index, 1);
+
+            }
+
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+
+            displayCart();
+
+        }
+
+
+
+        function removeItem(index) {
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+            cart.splice(index, 1);
+
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+
+            displayCart();
+
+        }
+
+
+
+        function checkout() {
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+            if (cart.length === 0) {
+
+                alert("Your cart is empty!");
+
+                return;
+
+            }
+
+
+            alert("Checkout page coming next!");
+
+        }
+
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            displayCart();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
